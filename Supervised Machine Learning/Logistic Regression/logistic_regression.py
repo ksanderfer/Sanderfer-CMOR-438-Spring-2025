@@ -2,7 +2,7 @@ from mlxtend.plotting import plot_decision_regions
 import matplotlib.pyplot as plt
 import numpy as np
 
-class ClassificationNeuron(object):
+class LogisticNeuron(object):
     """
     A class used to represent a single artificial neuron. 
 

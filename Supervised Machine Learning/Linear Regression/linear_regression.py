@@ -1,6 +1,6 @@
 import numpy as np
 
-class RegressionNeuron(object):
+class LinearNeuron(object):
     """
     A class used to represent a single artificial neuron. 
 
