@@ -8,6 +8,7 @@ This repository houses various concepts and algorithms taught during the Spring 
 - Add notebooks and their examples
 - Add performance metrics for implementations
 - Check APIs for consistency
+- Update directory READMEs according to rubric
 
 ### Author
 Kyle Sanderfer | <kylesanderfer@rice.edu> | Rice University
