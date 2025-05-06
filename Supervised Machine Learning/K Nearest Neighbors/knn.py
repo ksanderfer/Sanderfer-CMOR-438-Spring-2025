@@ -1,21 +1,26 @@
-from util import *
+from util import distance
 
-class KNN ():
-    def __init__(self, k, point, training_features, training_labels):
+class KNN:
+    def __init__(self, k):
         self.k = k
-        self.point = point
-        self.training_features = training_features
-        self.training_labels = training_labels
-    
-    def k_nearest_neighbors(self):
-        # Create an empty list to store neighbors and distances
+
+    def fit(self, X_train, y_train):
+        self.X_train = X_train
+        self.y_train = y_train
+
+    def predict(self, X_test):
+        predictions = []
+        for point in X_test:
+            neighbors = self._k_nearest(point)
+            votes = [label for _, label, _ in neighbors]
+            pred = max(set(votes), key=votes.count)
+            predictions.append(pred)
+        return predictions
+
+    def _k_nearest(self, point):
         neighbors = []
-        
-        for p, label in zip(self.training_features, self.training_labels):
-            d = distance(self.point, p)
-            temp_data = [p, label, d]
-            neighbors.append(temp_data)
-            
-        neighbors.sort(key = lambda x : x[-1])
-        
+        for x_train, label in zip(self.X_train, self.y_train):
+            d = distance(point, x_train)
+            neighbors.append((x_train, label, d))
+        neighbors.sort(key=lambda x: x[-1])
         return neighbors[:self.k]
